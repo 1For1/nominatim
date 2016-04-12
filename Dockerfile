@@ -8,7 +8,7 @@ RUN echo "host all  all    0.0.0.0/0  trust" >> /etc/postgresql/9.3/main/pg_hba.
 
 # Nominatim install
 RUN mkdir -p ./src
-#RUN rm -rf ./src
+RUN rm -rf ./src
 RUN git clone --recursive git://github.com/twain47/Nominatim.git ./src && \
     cmake ./src && make
 
