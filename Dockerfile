@@ -6,8 +6,10 @@ WORKDIR /app
 RUN echo "host all  all    0.0.0.0/0  trust" >> /etc/postgresql/9.3/main/pg_hba.conf && \
     echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 
-# Nominatim install  --recursive
-RUN git clone git://github.com/twain47/Nominatim.git ./src && \
+# Nominatim install
+RUN mkdir -p ./src
+#RUN rm -rf ./src
+RUN git clone --recursive git://github.com/twain47/Nominatim.git ./src && \
     cmake ./src && make
 
 # Nominatim create site
