@@ -1,7 +1,7 @@
 FROM oneforone/nominatim-base
 
 # Load initial data
-ARG PBF_DATA=http://download.geofabrik.de/europe/monaco-latest.osm.pbf
+ARG PBF_DATA=http://download.geofabrik.de/europe/1.osm.pbf
 RUN curl $PBF_DATA --create-dirs -o /app/src/data.osm.pbf
 RUN service postgresql start && \
     sudo -u postgres psql postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname='nominatim'" | grep -q 1 || sudo -u postgres createuser -s nominatim && \
