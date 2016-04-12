@@ -1,3 +1,5 @@
+FROM oneforone/nominatim-base
+
 # Load initial data
 ARG PBF_DATA=http://download.geofabrik.de/europe/monaco-latest.osm.pbf
 RUN curl $PBF_DATA --create-dirs -o /app/src/data.osm.pbf
